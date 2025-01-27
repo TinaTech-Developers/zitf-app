@@ -24,7 +24,7 @@ export default function ExhibitorLinks({ heading, link }: ExhibitorLinksProps) {
       }}
       onPress={() => router.push(link)}
     >
-      <Text style={{ fontSize: 16, fontWeight: "600" }}>{heading}</Text>
+      <Text style={{ fontSize: 16, fontWeight: "800" }}>{heading}</Text>
       <Ionicons size={20} name="chevron-forward" color="black" />
     </TouchableOpacity>
   );
