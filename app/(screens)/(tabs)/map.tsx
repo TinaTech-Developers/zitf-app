@@ -9,12 +9,19 @@ import {
   TouchableOpacity,
   Image,
   Animated,
+  Dimensions,
 } from "react-native";
 import {
   PinchGestureHandler,
   State,
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
+
+// Get screen dimensions
+const { width, height } = Dimensions.get("window");
+
+// Determine if the screen is large enough to be considered a tablet
+const isLargeScreen = width > 600;
 
 const MapScreen: React.FC = () => {
   const router = useRouter();
@@ -44,8 +51,12 @@ const MapScreen: React.FC = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Wrap everything in GestureHandlerRootView */}
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Site Map</Text>
+      <View style={isLargeScreen ? styles.headerTablet : styles.header}>
+        <Text
+          style={isLargeScreen ? styles.headerTextTablet : styles.headerText}
+        >
+          Site Map
+        </Text>
         <Ionicons size={20} name="location-outline" color="white" />
       </View>
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -54,63 +65,47 @@ const MapScreen: React.FC = () => {
           onHandlerStateChange={onPinchHandlerStateChange}
         >
           <Animated.View style={[styles.container, { transform: [{ scale }] }]}>
-            <View style={styles.wrapper}>
+            <View style={isLargeScreen ? styles.wrapperTablet : styles.wrapper}>
               {/* hall 4 */}
               <TouchableOpacity
-                style={styles.button}
-                onPress={handleButtonPress}
+                style={isLargeScreen ? styles.buttonTablet : styles.button}
+                onPress={() => router.navigate("/hallfour")}
               ></TouchableOpacity>
               {/* hall 3 */}
               <TouchableOpacity
-                style={styles.button1}
+                style={isLargeScreen ? styles.button1Tablet : styles.button1}
                 onPress={() => router.push("/hallthree")}
-              ></TouchableOpacity>{" "}
+              ></TouchableOpacity>
               {/* hall 1 */}
               <TouchableOpacity
-                style={styles.button8}
+                style={isLargeScreen ? styles.button8Tablet : styles.button8}
                 onPress={() => router.push("/hallone")}
               ></TouchableOpacity>
               {/* arena */}
               <TouchableOpacity
-                style={styles.button2}
+                style={isLargeScreen ? styles.button2Tablet : styles.button2}
                 onPress={() => router.push("/arena")}
               ></TouchableOpacity>
               {/* hall 5 */}
               <TouchableOpacity
-                style={styles.button3}
+                style={isLargeScreen ? styles.button3Tablet : styles.button3}
                 onPress={() => router.navigate("/hallfive")}
               ></TouchableOpacity>
               {/* nb */}
-              <TouchableOpacity
-                style={styles.button4}
-                onPress={handleButtonPress}
-              ></TouchableOpacity>
+
               {/* BBb */}
-              <TouchableOpacity
-                style={styles.button5}
-                onPress={handleButtonPress}
-              ></TouchableOpacity>
+
               {/* AAb */}
-              <TouchableOpacity
-                style={styles.button6}
-                onPress={handleButtonPress}
-              ></TouchableOpacity>
+
               {/* Zb */}
-              <TouchableOpacity
-                style={styles.button7}
-                onPress={handleButtonPress}
-              ></TouchableOpacity>
+
               {/* large btn */}
-              <TouchableOpacity
-                style={styles.button9}
-                onPress={() => router.navigate("/large")}
-              ></TouchableOpacity>
+
               {/* Image section */}
-              {/* https://m8e8s75it9.ufs.sh/f/DOn1aY0zPecSsO9KhPu5v7oMSlkRjq3gWXmYKsVZCu4bPwiF */}
               <View style={styles.imageContainer}>
                 <Image
                   source={require("../../../assets/images/layout.png")}
-                  style={styles.image}
+                  style={isLargeScreen ? styles.imageTablet : styles.image}
                   resizeMode="contain" // Ensures the image doesn't stretch or compress
                 />
               </View>
@@ -140,10 +135,29 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  headerTablet: {
+    backgroundColor: "#003366",
+    paddingVertical: 40,
+    paddingHorizontal: 30,
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  headerTextTablet: {
+    color: "white",
+    fontSize: 26,
+    fontWeight: "bold",
+  },
   wrapper: {
     flex: 1,
     marginTop: 10,
     padding: 7,
+    backgroundColor: "white",
+  },
+  wrapperTablet: {
+    flex: 1,
+    marginTop: 10,
+    padding: 15,
     backgroundColor: "white",
   },
   button: {
@@ -158,6 +172,21 @@ const styles = StyleSheet.create({
     height: 45,
     width: 48,
     transform: [{ rotate: "-27deg" }],
+    // backgroundColor: "red",
+  },
+  buttonTablet: {
+    position: "absolute",
+    top: 683,
+    left: "57.5%",
+    marginLeft: -75,
+    paddingVertical: 20,
+    paddingHorizontal: 4,
+    borderRadius: 5,
+    zIndex: 10,
+    height: 78,
+    width: 78,
+    transform: [{ rotate: "-27deg" }],
+    // backgroundColor: "red",
   },
   button1: {
     position: "absolute",
@@ -171,11 +200,26 @@ const styles = StyleSheet.create({
     height: 45,
     width: 38,
     transform: [{ rotate: "-30deg" }],
+    // backgroundColor: "red",
+  },
+  button1Tablet: {
+    position: "absolute",
+    top: 585,
+    left: "69%",
+    marginLeft: -75,
+    paddingVertical: 20,
+    paddingHorizontal: 4,
+    borderRadius: 5,
+    zIndex: 10,
+    height: 80,
+    width: 62,
+    transform: [{ rotate: "-30deg" }],
+    // backgroundColor: "red",
   },
   button2: {
     position: "absolute",
-    top: 500,
-    left: "89%",
+    top: 516,
+    left: "89.5%",
     marginLeft: -75,
     paddingVertical: 15,
     paddingHorizontal: 2,
@@ -184,6 +228,20 @@ const styles = StyleSheet.create({
     height: 50,
     width: 70,
     transform: [{ rotate: "-32deg" }],
+  },
+  button2Tablet: {
+    position: "absolute",
+    top: 839,
+    left: "76%",
+    marginLeft: -75,
+    paddingVertical: 15,
+    paddingHorizontal: 2,
+    borderRadius: 5,
+    zIndex: 10,
+    height: 88,
+    width: 115,
+    transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
   },
   button3: {
     position: "absolute",
@@ -197,6 +255,21 @@ const styles = StyleSheet.create({
     height: 35,
     width: 20,
     transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
+  },
+  button3Tablet: {
+    position: "absolute",
+    top: 745,
+    left: "73.5%",
+    marginLeft: -75,
+    paddingVertical: 15,
+    paddingHorizontal: 2,
+
+    zIndex: 10,
+    height: 50,
+    width: 32,
+    transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "yellow",
   },
   button4: {
     position: "absolute",
@@ -210,6 +283,21 @@ const styles = StyleSheet.create({
     height: 10,
     width: 30,
     transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
+  },
+  button4Tablet: {
+    position: "absolute",
+    top: 653,
+    left: "95.5%",
+    marginLeft: -75,
+    paddingVertical: 1,
+    paddingHorizontal: 2,
+    borderRadius: 1,
+    zIndex: 10,
+    height: 10,
+    width: 30,
+    transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "yellow",
   },
   button5: {
     position: "absolute",
@@ -223,7 +311,9 @@ const styles = StyleSheet.create({
     height: 24,
     width: 30,
     transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
   },
+  button5Tablet: {},
   button6: {
     position: "absolute",
     top: 397,
@@ -236,13 +326,14 @@ const styles = StyleSheet.create({
     height: 20,
     width: 30,
     transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
   },
+  button6Tablet: {},
   button7: {
     position: "absolute",
     top: 410,
     left: "84%",
     marginLeft: -75,
-    backgroundColor: "",
     paddingVertical: 1,
     paddingHorizontal: 2,
     borderRadius: 5,
@@ -250,7 +341,9 @@ const styles = StyleSheet.create({
     height: 25,
     width: 15,
     transform: [{ rotate: "-32deg" }],
+    // backgroundColor: "red",
   },
+  button7Tablet: {},
   button8: {
     position: "absolute",
     top: 160,
@@ -263,6 +356,20 @@ const styles = StyleSheet.create({
     height: 55,
     width: 20,
   },
+  button8Tablet: {
+    position: "absolute",
+    top: 219,
+    left: "68.7%",
+    marginLeft: -75,
+    paddingVertical: 15,
+    paddingHorizontal: 2,
+    borderRadius: 5,
+    zIndex: 10,
+    height: 105,
+    width: 35,
+    // backgroundColor: "red",
+    transform: [{ rotate: "-12deg" }],
+  },
   button9: {
     position: "absolute",
     top: 190,
@@ -274,7 +381,31 @@ const styles = StyleSheet.create({
     zIndex: 10,
     height: 200,
     width: 20,
+    // backgroundColor: "red",
   },
+
+  // Image styles for tablet (larger screens)
+  imageTablet: {
+    top: 20,
+    width: "100%",
+    height: "100%", // Adjust height for larger screens
+    borderRadius: 10,
+  },
+
+  button9Tablet: {
+    position: "absolute",
+    top: 190,
+    left: "102%",
+    marginLeft: -75,
+    paddingVertical: 1,
+    paddingHorizontal: 2,
+    borderRadius: 5,
+    zIndex: 10,
+    height: 200,
+    width: 20,
+    backgroundColor: "red",
+  },
+
   imageContainer: {
     flex: 1,
     justifyContent: "center",
@@ -284,7 +415,7 @@ const styles = StyleSheet.create({
   image: {
     top: 20,
     width: "100%",
-    height: "100%", // Fixed height
+    height: "100%", // Fixed height for smaller screens
     borderRadius: 10, // Optional: rounded corners for the image
   },
 });

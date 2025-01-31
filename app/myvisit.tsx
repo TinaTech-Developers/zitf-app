@@ -2,11 +2,13 @@ import ExhibitorLinks from "@/components/ExhibitorLinks";
 import Header from "@/components/Header";
 import MyVisitLinks from "@/components/MyVisit";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
 
 export default function MyVisit() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
@@ -17,7 +19,7 @@ export default function MyVisit() {
             <MyVisitLinks
               icon={<Ionicons name="time" size={20} />}
               heading="Opening Hours"
-              link="/openinghours"
+              link="/tradefairhours"
             />
             <View className="w-[100%] h-[2px] bg-[#003366] my-2" />
             <MyVisitLinks

@@ -80,11 +80,12 @@ export default function TabLayout() {
           tabBarLabel: ({ color }) => <Text style={{ color }}>{"Map"}</Text>,
         }}
       />
+
       <Tabs.Screen
         name="search"
         options={{
-          title: "Search", // Sets the title for the header
-          headerShown: true, // Ensures the header is visible
+          title: "Search",
+          headerShown: true,
           tabBarIcon: ({ color }) => (
             <Ionicons size={32} name="search" color={color} />
           ),

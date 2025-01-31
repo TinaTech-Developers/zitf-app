@@ -44,6 +44,51 @@ const exhibitors: Exhibitor[] = [
     name: "ZimTrade",
     logo: require("../assets/images/zimtrade.webp"),
   },
+  {
+    id: "5",
+    name: "TelOne",
+    logo: require("../assets/images/telone.png"),
+  },
+  {
+    id: "6",
+    name: "BancABC",
+    logo: require("../assets/images/banc.png"),
+  },
+  {
+    id: "7",
+    name: "AgriBank",
+    logo: require("../assets/images/Agribank.png"),
+  },
+  {
+    id: "8",
+    name: "Architectural Aluminium",
+    logo: require("../assets/images/architectural-aluminium-logo.jpg"),
+  },
+  {
+    id: "9",
+    name: "Delta Beveranges",
+    logo: require("../assets/images/Delta.jpg"),
+  },
+  {
+    id: "10",
+    name: "Creative",
+    logo: require("../assets/images/creative.png"),
+  },
+  {
+    id: "11",
+    name: "FuserTech",
+    logo: require("../assets/images/fusertech.jpg"),
+  },
+  {
+    id: "12",
+    name: "Grapenote",
+    logo: require("../assets/images/grapenote.png"),
+  },
+  {
+    id: "13",
+    name: "Innovative Technologies",
+    logo: require("../assets/images/inno.jpeg"),
+  },
 ];
 
 export default function Allexhibitors() {

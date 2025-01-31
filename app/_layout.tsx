@@ -150,11 +150,32 @@ export default function RootLayout() {
             },
           }}
         />
-
         <Stack.Screen
           name="hallfive"
           options={{
             title: "HALL 5",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#003366",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <Ionicons
+                size={20}
+                name="location-outline"
+                color="white"
+                style={{ marginRight: 15 }}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="hallfour"
+          options={{
+            title: "HALL 4",
             headerShown: true,
             headerStyle: {
               backgroundColor: "#003366",
@@ -239,7 +260,6 @@ export default function RootLayout() {
             ),
           }}
         />
-
         <Stack.Screen
           name="hallone"
           options={{
@@ -262,7 +282,6 @@ export default function RootLayout() {
             ),
           }}
         />
-
         <Stack.Screen
           name="large"
           options={{
@@ -329,11 +348,54 @@ export default function RootLayout() {
             ),
           }}
         />
-
         <Stack.Screen
           name="myvisit"
           options={{
             title: "Your Visit",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#003366",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <Ionicons
+                size={20}
+                name="calendar"
+                color="white"
+                style={{ marginRight: 15 }}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="tozitf"
+          options={{
+            title: "Your Visit",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#003366",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <Ionicons
+                size={20}
+                name="calendar"
+                color="white"
+                style={{ marginRight: 15 }}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="tradefairhours"
+          options={{
+            title: "Hours",
             headerShown: true,
             headerStyle: {
               backgroundColor: "#003366",
