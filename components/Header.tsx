@@ -17,7 +17,7 @@ export default function Header() {
         source={require("../assets/images/ZITF-logo.png")} // Use the correct relative path
         style={{ width: 120, height: 40, objectFit: "cover" }} // Apply width and height directly using style
       />
-      <Text style={{ fontSize: 36, color: "#003366" }}>SKYSTIPE</Text>
+      {/* <Text style={{ fontSize: 36, color: "#003366" }}>SKYSTIPE</Text> */}
     </View>
   );
 }

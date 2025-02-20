@@ -10,6 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.tinasoft.zitf_app",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "We need your location to show directions."
       }

@@ -14,6 +14,7 @@ import "tailwindcss/tailwind.css";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import "../global.css";
 import { Ionicons } from "@expo/vector-icons";
+import ExhibitorScreen from "./exhibitorscreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -415,6 +416,52 @@ export default function RootLayout() {
           }}
         />
 
+        <Stack.Screen
+          name="favorites"
+          options={{
+            title: "My Exhibitors",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#003366",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <Ionicons
+                size={30}
+                name="heart"
+                color="red"
+                style={{ marginRight: 15 }}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="exhibitorscreen"
+          options={{
+            title: "Exhibitor Info",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#003366",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <Ionicons
+                size={30}
+                name="heart"
+                color="red"
+                style={{ marginRight: 15 }}
+              />
+            ),
+          }}
+        />
+
+        <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

@@ -58,11 +58,11 @@ export default function HomeScreen() {
             link={"/myvisit"}
           />
         </View>
-        <View className="flex flex-row gap-4 items-center justify-center mt-5 ">
-          <View className="w-[7.67rem] h-[7.67rem] bg-white border border-gray-400 text-black">
+        <View className="flex flex-row gap-4 items-center justify-center ">
+          <View className="w-[30%] h-[7.67rem] bg-white border border-gray-400 text-black">
             1
           </View>
-          <View className="w-[7.67rem] h-[7.67rem] bg-white border border-gray-400">
+          <View className="w-[30%] h-[7.67rem] bg-white border border-gray-400">
             1
           </View>
         </View>

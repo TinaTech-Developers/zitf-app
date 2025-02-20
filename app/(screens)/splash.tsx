@@ -14,8 +14,8 @@ export default function SplashScreen() {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push("/(tabs)" as any);
-    }, 2000);
+      router.push("/login" as any);
+    }, 4000);
   }, []);
 
   return (
@@ -60,6 +60,17 @@ export default function SplashScreen() {
           source={require("../../assets/images/ZITF-logo.png")}
           style={{ width: 200, height: 120, objectFit: "contain" }}
         />
+        <Text
+          style={{
+            fontSize: 60,
+            color: "#003366",
+            fontWeight: "900",
+            textAlign: "center",
+            fontFamily: "Lato",
+          }}
+        >
+          2025
+        </Text>
         <Text style={{ marginTop: 20, color: "#000" }}>LOADING...</Text>
       </View>
     </ImageBackground>

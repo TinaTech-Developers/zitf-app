@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import FlipAnimation from "@/components/FlipAnimation";
 
 // Define types for the exhibitor and sections
 interface Exhibitor {
@@ -110,91 +111,93 @@ export default function startups() {
   );
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
-        <TextInput
-          style={{
-            width: "100%",
-            borderBottomWidth: 2,
-            paddingVertical: 10,
-            marginBottom: 20,
-            fontSize: 16,
-          }}
-          placeholder="Search exhibitors"
-          value={searchText}
-          onChangeText={setSearchText}
-        />
+    <FlipAnimation>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
+          <TextInput
+            style={{
+              width: "100%",
+              borderBottomWidth: 2,
+              paddingVertical: 10,
+              marginBottom: 20,
+              fontSize: 16,
+            }}
+            placeholder="Search exhibitors"
+            value={searchText}
+            onChangeText={setSearchText}
+          />
 
-        <SectionList
-          sections={sections}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                paddingVertical: 10,
-                borderBottomWidth: 1,
-                borderBottomColor: "#ccc",
-                justifyContent: "space-between",
-              }}
-            >
-              {/* TouchableOpacity for the exhibitor's logo and name */}
-              <TouchableOpacity
-                onPress={() => router.push("/hall5")}
+          <SectionList
+            sections={sections}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
+                  paddingVertical: 10,
+                  borderBottomWidth: 1,
+                  borderBottomColor: "#ccc",
+                  justifyContent: "space-between",
                 }}
               >
-                <Image
-                  source={item.logo}
+                {/* TouchableOpacity for the exhibitor's logo and name */}
+                <TouchableOpacity
+                  onPress={() => router.push("/hall5")}
                   style={{
-                    width: 80,
-                    height: 60,
-                    marginRight: 10,
-                    borderRadius: 2,
-                    resizeMode: "contain",
-                    borderWidth: 1,
-                    borderColor: "#003366",
-                    padding: 4,
+                    flexDirection: "row",
+                    alignItems: "center",
                   }}
-                />
-                <Text style={{ fontSize: 18 }}>{item.name}</Text>
-              </TouchableOpacity>
+                >
+                  <Image
+                    source={item.logo}
+                    style={{
+                      width: 80,
+                      height: 60,
+                      marginRight: 10,
+                      borderRadius: 2,
+                      resizeMode: "contain",
+                      borderWidth: 1,
+                      borderColor: "#003366",
+                      padding: 4,
+                    }}
+                  />
+                  <Text style={{ fontSize: 18 }}>{item.name}</Text>
+                </TouchableOpacity>
 
-              {/* TouchableOpacity for the star icon, placed outside */}
-              <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
-                <FontAwesome
-                  name={favorites.includes(item.id) ? "star" : "star-o"}
-                  size={24}
-                  color={favorites.includes(item.id) ? "gold" : "gray"}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-          renderSectionHeader={({ section }: { section: SectionData }) => (
-            <View
-              style={{
-                backgroundColor: "#003366",
-                paddingVertical: 2,
-                paddingLeft: 10,
-              }}
-            >
-              <Text
-                style={{ fontWeight: "bold", fontSize: 14, color: "white" }}
+                {/* TouchableOpacity for the star icon, placed outside */}
+                <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
+                  <FontAwesome
+                    name={favorites.includes(item.id) ? "star" : "star-o"}
+                    size={24}
+                    color={favorites.includes(item.id) ? "gold" : "gray"}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+            renderSectionHeader={({ section }: { section: SectionData }) => (
+              <View
+                style={{
+                  backgroundColor: "#003366",
+                  paddingVertical: 2,
+                  paddingLeft: 10,
+                }}
               >
-                {section.title}
+                <Text
+                  style={{ fontWeight: "bold", fontSize: 14, color: "white" }}
+                >
+                  {section.title}
+                </Text>
+              </View>
+            )}
+            ListEmptyComponent={
+              <Text style={{ fontSize: 18, color: "gray" }}>
+                No exhibitors found
               </Text>
-            </View>
-          )}
-          ListEmptyComponent={
-            <Text style={{ fontSize: 18, color: "gray" }}>
-              No exhibitors found
-            </Text>
-          }
-        />
-      </View>
-    </SafeAreaView>
+            }
+          />
+        </View>
+      </SafeAreaView>
+    </FlipAnimation>
   );
 }

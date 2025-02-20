@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    width: 109,
-    height: 105,
+    width: "30%",
+    height: "35%",
     backgroundColor: "#003366",
     borderColor: "#000",
 

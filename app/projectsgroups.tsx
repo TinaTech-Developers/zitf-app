@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import FlipAnimation from "@/components/FlipAnimation";
 
 const exhibitors = [
   {
@@ -84,60 +85,62 @@ export default function ProjectGroups() {
     .sort();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 10, backgroundColor: "white" }}>
-        <TextInput
-          style={{
-            width: "100%",
-            borderBottomWidth: 2,
-            paddingVertical: 10,
-            marginBottom: 20,
-            fontSize: 16,
-          }}
-          placeholder="Search exhibitors"
-          value={searchText}
-          onChangeText={setSearchText}
-        />
+    <FlipAnimation>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, padding: 10, backgroundColor: "white" }}>
+          <TextInput
+            style={{
+              width: "100%",
+              borderBottomWidth: 2,
+              paddingVertical: 10,
+              marginBottom: 20,
+              fontSize: 16,
+            }}
+            placeholder="Search exhibitors"
+            value={searchText}
+            onChangeText={setSearchText}
+          />
 
-        <FlatList
-          data={filteredExhibitors}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => {
-            const isSelected = item.id === selectedId;
-            const isHovered = item.id === hoveredId;
-            return (
-              <TouchableOpacity
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  paddingVertical: 10,
-                  borderBottomWidth: 1,
-                  borderBottomColor: "#ccc",
-                  backgroundColor: isSelected
-                    ? "#d3d3d3"
-                    : isHovered
-                    ? "#f0f0f0"
-                    : "white",
-                  height: 45,
-                }}
-                onPress={() => setSelectedId(isSelected ? null : item.id)}
-                onPressIn={() => setHoveredId(item.id)}
-                onPressOut={() => setHoveredId(null)}
-              >
-                <Text style={{ fontSize: 14, flex: 1, paddingHorizontal: 2 }}>
-                  {item.name}
-                </Text>
-                <Ionicons size={20} name="chevron-forward" color="#003366" />
-              </TouchableOpacity>
-            );
-          }}
-          ListEmptyComponent={
-            <Text style={{ fontSize: 18, color: "gray" }}>
-              No exhibitors found
-            </Text>
-          }
-        />
-      </View>
-    </SafeAreaView>
+          <FlatList
+            data={filteredExhibitors}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => {
+              const isSelected = item.id === selectedId;
+              const isHovered = item.id === hoveredId;
+              return (
+                <TouchableOpacity
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: 10,
+                    borderBottomWidth: 1,
+                    borderBottomColor: "#ccc",
+                    backgroundColor: isSelected
+                      ? "#d3d3d3"
+                      : isHovered
+                      ? "#f0f0f0"
+                      : "white",
+                    height: 45,
+                  }}
+                  onPress={() => setSelectedId(isSelected ? null : item.id)}
+                  onPressIn={() => setHoveredId(item.id)}
+                  onPressOut={() => setHoveredId(null)}
+                >
+                  <Text style={{ fontSize: 14, flex: 1, paddingHorizontal: 2 }}>
+                    {item.name}
+                  </Text>
+                  <Ionicons size={20} name="chevron-forward" color="#003366" />
+                </TouchableOpacity>
+              );
+            }}
+            ListEmptyComponent={
+              <Text style={{ fontSize: 18, color: "gray" }}>
+                No exhibitors found
+              </Text>
+            }
+          />
+        </View>
+      </SafeAreaView>
+    </FlipAnimation>
   );
 }
